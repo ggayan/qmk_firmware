@@ -1,8 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "debug.h"
-#include "action_layer.h"
 #include "version.h"
-
 #include "ggayan.h"
 
 #define _____ KC_TRANSPARENT
@@ -78,13 +75,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [L_HOTS] = LAYOUT_ergodox(
     // left hand
-    KC_ESCAPE, _____,  _____,  _____,  _____,  _____,  _____,
-    KC_TAB,    _____,  _____,  _____,  _____,  _____,  _____,
-    KC_F2,     _____,  _____,  _____,  _____,  _____,
-    KC_LSHIFT, _____,  _____,  _____,  _____,  _____,  _____,
-    KC_LCTL,   KC_LCTL,  KC_LCTL,  KC_LCTL,  KC_LALT,
+    _____, _____,  _____,  _____,  _____,  _____,  _____,
+    _____, _____,  _____,  _____,  _____,  _____,  KC_F1,
+    KC_F2, _____,  _____,  _____,  _____,  _____,
+    _____, _____,  _____,  _____,  _____,  _____,  KC_F2,
+    KC_NO, _____,  _____,  _____,  _____,
 
-                     KC_NO,  KC_NO,
+                     _____,  _____,
                              _____,
              _____,  _____,  _____,
 

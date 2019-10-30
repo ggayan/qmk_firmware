@@ -3,9 +3,6 @@
 
 #include "quantum.h"
 
-
-#define KC_MPP KC_MEDIA_PLAY_PAUSE // rename media play pause for better layout
-
 enum userspace_layers {
   L_WIN = 0, // default layer for windows
   L_OSX, // default layer for mac
