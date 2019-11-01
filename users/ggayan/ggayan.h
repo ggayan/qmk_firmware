@@ -2,6 +2,9 @@
 #define USERSPACE
 
 #include "quantum.h"
+#define LEADER_TIMEOUT 100
+#define LEADER_PER_KEY_TIMING
+
 
 enum userspace_layers {
   L_WIN = 0, // default layer for windows
