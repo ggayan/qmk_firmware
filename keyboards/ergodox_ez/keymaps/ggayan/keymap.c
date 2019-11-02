@@ -122,10 +122,19 @@ void matrix_scan_user(void) {
     leader_end();
 
     SEQ_ONE_KEY(KC_SPC) {
-      register_code(KC_LGUI);
-      register_code(KC_SPC);
-      unregister_code(KC_SPC);
-      unregister_code(KC_LGUI);
+      SEND_STRING(SS_LGUI(" "));
+    }
+
+    SEQ_ONE_KEY(KC_B) {
+      SEND_STRING(SS_LGUI(" ")"b ");
+    }
+
+    SEQ_ONE_KEY(KC_S) {
+      SEND_STRING(SS_LGUI(" ")"b s ");
+    }
+
+    SEQ_ONE_KEY(KC_W) {
+      SEND_STRING(SS_LGUI(" ")"b w ");
     }
   }
 };
