@@ -100,13 +100,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
-#ifdef RGBLIGHT_ENABLE
-  rgblight_init();
-  rgblight_enable();
-  #ifdef RGBLIGHT_COLOR_LAYER_0
-    rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
-  #endif
-#endif
   // set led1 for default eeprom layer if necessary
   uint8_t default_layer = eeconfig_read_default_layer();
   if (default_layer & (1UL << L_OSX)) {
@@ -140,7 +133,7 @@ void matrix_scan_user(void) {
 };
 
 // Runs whenever there is a layer state change.
-uint32_t layer_state_set_user(uint32_t state) {
+layer_state_t layer_state_set_user(layer_state_t state) {
   ergodox_board_led_off();
   ergodox_right_led_1_off();
   ergodox_right_led_2_off();
@@ -149,9 +142,6 @@ uint32_t layer_state_set_user(uint32_t state) {
   uint8_t layer = biton32(state);
   uint8_t default_layer = eeconfig_read_default_layer();
 
-  // led1 indicates whether we're on osx or win default layouts
-  // led2 indicates symbols/media layer
-  // led3 indicates whether we're in gaming mode or not.
   if (default_layer & (1UL << L_OSX)) {
     ergodox_right_led_1_on();
   }
