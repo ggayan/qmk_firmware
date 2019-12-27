@@ -5,7 +5,6 @@
 #define LEADER_TIMEOUT 200
 #define LEADER_PER_KEY_TIMING
 
-
 enum userspace_layers {
   L_WIN = 0, // default layer for windows
   L_OSX, // default layer for mac

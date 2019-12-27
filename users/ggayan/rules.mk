@@ -1,3 +1,4 @@
 SRC += ggayan.c
 EXTRAFLAGS += -flto
 LEADER_ENABLE = yes
+NO_USB_STARTUP_CHECK = yes
