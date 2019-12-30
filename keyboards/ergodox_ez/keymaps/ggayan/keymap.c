@@ -125,9 +125,11 @@ void matrix_scan_user(void) {
     SEQ_ONE_KEY(KC_S) {
       SEND_STRING(SS_LGUI(" ")"b s ");
     }
-
     SEQ_ONE_KEY(KC_W) {
       SEND_STRING(SS_LGUI(" ")"b w ");
+    }
+    SEQ_ONE_KEY(KC_Q) {
+      SEND_STRING(SS_LCTRL(SS_LGUI("q")));
     }
   }
 };
