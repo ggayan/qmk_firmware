@@ -2,7 +2,7 @@
 #define USERSPACE
 
 #include "quantum.h"
-#define LEADER_TIMEOUT 200
+#define LEADER_TIMEOUT 300
 #define LEADER_PER_KEY_TIMING
 
 enum userspace_layers {
