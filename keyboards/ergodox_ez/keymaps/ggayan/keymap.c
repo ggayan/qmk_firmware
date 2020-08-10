@@ -7,13 +7,13 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [L_WIN] = LAYOUT_ergodox(  // layer 0 : default
     // left hand
-    KC_ESCAPE,     KC_1,     KC_2,     KC_3,      KC_4,  KC_5, KC_GRAVE,
+    KC_ESCAPE,     KC_1,     KC_2,     KC_3,      KC_4,  KC_5, KC_6,
     KC_TAB,        KC_Q,     KC_W,     KC_E,      KC_R,  KC_T,   KC_TAB,
     KC_LGUI,       KC_A,     KC_S,     KC_D,      KC_F,  KC_G,
     KC_LSFT,       KC_Z,     KC_X,     KC_C,      KC_V,  KC_B,   KC_DEL,
     OSL(L_SYMB),   KC_LCTL,   KC_LALT,  KC_LEFT, KC_RIGHT,
 
-                                               KC_INS,       KC_PSCREEN,
+                                               KC_GRAVE,     KC_PSCREEN,
                                                                 KC_LALT,
                                            KC_SPACE, KC_BSPACE, KC_LCTL,
 
@@ -30,21 +30,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [L_OSX] = LAYOUT_ergodox(  // layer 0 : default
     // left hand
-    KC_ESCAPE,      KC_1,     KC_2,      KC_3,      KC_4,   KC_5,   KC_GRAVE,
+    KC_ESCAPE,      KC_1,     KC_2,      KC_3,      KC_4,   KC_5,   KC_6,
     KC_TAB,         KC_Q,     KC_W,      KC_E,      KC_R,   KC_T,   KC_TAB,
     KC_HYPR,        KC_A,     KC_S,      KC_D,      KC_F,   KC_G,
     KC_LSFT,        KC_Z,     KC_X,      KC_C,      KC_V,   KC_B,   KC_DELETE,
     OSL(L_SYMB),    KC_LCTL,   KC_LALT,  KC_LEFT, KC_RIGHT,
 
-                                                           KC_LSFT, KC_LCTL,
+                                                          KC_GRAVE, KC_LCTL,
                                                                     KC_LALT,
                                                  KC_SPACE,KC_BSPACE,KC_LGUI,
 
     // right hand
-    KC_EQUAL,     KC_6,   KC_7,  KC_8,   KC_9,     KC_0,          KC_MINUS,
-    KC_BSPACE,      KC_Y,   KC_U,  KC_I,   KC_O,     KC_P,         KC_BSLASH,
-                  KC_H,   KC_J,  KC_K,   KC_L,     KC_SCOLON,     GUI_T(KC_QUOT),
-    KC_ESCAPE,    KC_N,   KC_M,  KC_COMM,KC_DOT,   KC_SLASH,      KC_RSFT,
+    KC_EQUAL,       KC_6,   KC_7,  KC_8,   KC_9,      KC_0,       KC_MINUS,
+    KC_BSPACE,      KC_Y,   KC_U,  KC_I,   KC_O,      KC_P,      KC_BSLASH,
+                  KC_H,   KC_J,  KC_K,   KC_L,   KC_SCOLON, GUI_T(KC_QUOT),
+    KC_ESCAPE,    KC_N,   KC_M,  KC_COMM,KC_DOT,  KC_SLASH,        KC_RSFT,
                         KC_UP, KC_DOWN, KC_LBRC,  KC_RBRC, KC_RCTRL,
 
     KC_RGUI, KC_RSFT,
