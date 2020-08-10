@@ -65,13 +65,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right hand
     RESET,    KC_F6,    KC_F7,    KC_F8,    KC_F9,  KC_F10,   KC_F11,
     KC_MAKE,  KC_UP,    KC_7,     KC_8,     KC_9,   KC_ASTR,  KC_F12,
-              KC_DOWN,  KC_4,     KC_5,     KC_6,   KC_PLUS,  KC_L_OSX,
-      _____,  KC_AMPR,  KC_1,     KC_2,     KC_3,   KC_BSLS,  KC_L_WIN,
-                        _____,    KC_DOT,   KC_0,   KC_EQL,   TG(L_HOTS),
+              KC_DOWN,  KC_4,     KC_5,     KC_6,   KC_PLUS,  _____,
+      _____,  KC_AMPR,  KC_1,     KC_2,     KC_3,   KC_BSLS,  KC_L_TOGGLE_MAC_WIN,
+                        _____,    KC_DOT,   KC_0,   KC_EQL,   _____,
 
     _____, _____,
     _____,
-    _____, _____, KC_MEDIA_PLAY_PAUSE
+    TG(L_HOTS), _____, KC_MEDIA_PLAY_PAUSE
 ),
 [L_HOTS] = LAYOUT_ergodox(
     // left hand
@@ -98,46 +98,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 )
 };
 
-// Runs just one time when the keyboard initializes.
-void matrix_init_user(void) {
-  uint8_t default_layer = eeconfig_read_default_layer();
+void keyboard_post_init_user(void) {
+#ifdef RGBLIGHT_COLOR_LAYER_0
+    rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
+#endif
+    ergodox_board_led_off();
+    ergodox_right_led_1_off();
+    ergodox_right_led_2_off();
+    ergodox_right_led_3_off();
 
-  if (default_layer & (1UL << L_OSX)) {
-    ergodox_right_led_1_on();
-  }
-  else if (default_layer & (1UL << L_HOTS)) {
-    ergodox_right_led_3_on();
-  }
-};
+    uint8_t default_layer = eeconfig_read_default_layer();
 
-// Runs constantly in the background, in a loop.
-void matrix_scan_user(void) {
+    if (default_layer & (1UL << L_OSX)) {
+        ergodox_right_led_1_on();
+    } else if (default_layer & (1UL << L_HOTS)) {
+        ergodox_right_led_3_on();
+    }
 };
 
 // Runs whenever there is a layer state change.
 layer_state_t layer_state_set_user(layer_state_t state) {
-  ergodox_board_led_off();
-  ergodox_right_led_1_off();
-  ergodox_right_led_2_off();
-  ergodox_right_led_3_off();
+    ergodox_board_led_off();
+    ergodox_right_led_1_off();
+    ergodox_right_led_2_off();
+    ergodox_right_led_3_off();
 
-  uint8_t layer = biton32(state);
-  uint8_t default_layer = eeconfig_read_default_layer();
+    uint8_t layer         = biton32(state);
+    uint8_t default_layer = eeconfig_read_default_layer();
 
-  if (default_layer & (1UL << L_OSX)) {
-    ergodox_right_led_1_on();
-  }
+    // reading default layer here, checking for osx on layer switch doesn't work for some reason
+    if (default_layer & (1UL << L_OSX)) {
+        ergodox_right_led_1_on();
+    }
 
-  switch (layer) {
-    case L_SYMB:
-      ergodox_right_led_2_on();
-      break;
-    case L_HOTS:
-      ergodox_right_led_3_on();
-      break;
-    default:
-      break;
-  }
+    switch (layer) {
+        case L_SYMB:
+            ergodox_right_led_2_on();
+            break;
+        case L_HOTS:
+            ergodox_right_led_3_on();
+            break;
+        default:
+            break;
+    }
 
-  return state;
+    return state;
 };
